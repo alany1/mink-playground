@@ -32,8 +32,8 @@ if __name__ == "__main__":
             orientation_cost=1.0,
             lm_damping=1.0,
         ),
-        # posture_task := mink.PostureTask(model, cost=0),
-        # com_task := mink.ComTask(cost=10.0),
+        posture_task := mink.PostureTask(model, cost=0),
+        com_task := mink.ComTask(cost=10.0),
     ]
 
     feet_tasks = []
@@ -95,7 +95,7 @@ if __name__ == "__main__":
 
         # Initialize to the home keyframe.
         configuration.update_from_keyframe("teleop")
-        # posture_task.set_target_from_configuration(configuration)
+        posture_task.set_target_from_configuration(configuration)
         pelvis_orientation_task.set_target_from_configuration(configuration)
         torso_orientation_task.set_target_from_configuration(configuration)
         # Initialize mocap bodies at their respective sites.
@@ -107,7 +107,7 @@ if __name__ == "__main__":
         rate = RateLimiter(frequency=200.0, warn=False)
         while viewer.is_running():
             # Update task targets.
-            # com_task.set_target(data.mocap_pos[com_mid])
+            com_task.set_target(data.mocap_pos[com_mid])
             for i, (hand_task, foot_task) in enumerate(zip(hand_tasks, feet_tasks)):
                 foot_task.set_target(mink.SE3.from_mocap_id(data, feet_mid[i]))
                 hand_task.set_target(mink.SE3.from_mocap_id(data, hands_mid[i]))
