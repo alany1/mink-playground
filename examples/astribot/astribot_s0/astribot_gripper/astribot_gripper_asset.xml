@@ -1,0 +1,20 @@
+<mujocoinclude>
+    <asset>
+<!--        <material name="metal" rgba="0.58 0.58 0.58 1"/>-->
+<!--        <material name="silicone" rgba="0.1882 0.1882 0.1882 1"/>-->
+<!--        <material name="gray" rgba="0.4627 0.4627 0.4627 1"/>-->
+<!--        <material name="black" rgba="0.149 0.149 0.149 1"/>-->
+
+
+        <mesh name="gripper_base_link" file="astribot_s0/astribot_gripper/meshes/astribot_gripper_base_link.STL"/>
+        <mesh name="gripper_L1_Link" file="astribot_s0/astribot_gripper/meshes/astribot_gripper_L1_Link.STL"/>
+        <mesh name="gripper_L11_Link" file="astribot_s0/astribot_gripper/meshes/astribot_gripper_L11_Link.STL"/>
+        <mesh name="gripper_L2_Link" file="astribot_s0/astribot_gripper/meshes/astribot_gripper_L2_Link.STL"/>
+        <mesh name="gripper_R1_Link" file="astribot_s0/astribot_gripper/meshes/astribot_gripper_R1_Link.STL"/>
+        <mesh name="gripper_R11_Link" file="astribot_s0/astribot_gripper/meshes/astribot_gripper_R11_Link.STL"/>
+        <mesh name="gripper_R2_Link" file="astribot_s0/astribot_gripper/meshes/astribot_gripper_R2_Link.STL"/>
+
+      </asset>
+
+
+</mujocoinclude>

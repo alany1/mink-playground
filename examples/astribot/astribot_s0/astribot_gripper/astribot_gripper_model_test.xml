@@ -1,0 +1,40 @@
+<mujoco model="astribot_gripper">
+
+<!--    夹爪基座-->
+    <body name="astribot_gripper_base" pos="0 0 .0">
+      <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_base_link"/>
+<!--        左手指平行连杆1-->
+      <body name="gripper_L1_Link" pos="0.013001 0 0.0537">
+          <joint name="gripper_L1_joint" pos="0 0 0" axis="0 -1 0" range="0 1.14 " />
+          <geom name="gripper_L1_geom" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_L1_Link"/>
+          <body name="gripper_L11_Link" pos="0.036 0 0.031749">
+              <joint name="gripper_L11_joint" pos="0 0 0" axis="0 1 0" range="-3.14 3.14" />
+              <geom name="gripper_L11_geom" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_L11_Link"/>
+<!--              <body name="gripper_L11_anchor" pos="0.02 0 0.0"/>-->
+
+          </body>
+      </body>
+<!--        左手指平行连杆2-->
+      <body name="gripper_L2_Link" pos=".033 0 0.0537">
+          <joint name="gripper_L2_joint" pos="0 0 0" axis="0 1 0" range="-3.14 3.14" />
+          <geom name="gripper_L2_geom" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_L2_Link"/>
+<!--          <body name="gripper_L2_anchor" pos="0.036 0 0.031749"/>-->
+      </body>
+
+<!--        右手指平行连杆1-->
+      <body name="gripper_R1_Link" pos="-0.013001 0 0.0537">
+          <joint name="gripper_R1_joint" pos="0 0 0" axis="0 1 0" range="0 1.14 " />
+          <geom name="gripper_R1_geom" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_R1_Link"/>
+          <body name="gripper_R11_Link" pos="-0.036 0 0.031749">
+              <joint name="gripper_R11_joint" pos="0 0 0" axis="0 1 0" range="-3.14 3.14" />
+              <geom name="gripper_R11_geom" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_R11_Link"/>
+          </body>
+      </body>
+<!--        右手指平行连杆2-->
+      <body name="gripper_R2_Link" pos="-0.033 0 0.0537">
+          <joint name="gripper_R2_joint" pos="0 0 0" axis="0 1 0" range="-3.14 3.14" />
+          <geom name="gripper_R2_geom" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_R2_Link"/>
+      </body>
+    </body>>
+</mujoco>
+

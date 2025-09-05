@@ -1,0 +1,20 @@
+<mujoco>
+    <tendon>
+        <fixed name="gripper_left_split">
+          <joint joint="astribot_gripper_left_joint_R1" coef="1.0"/>
+          <joint joint="astribot_gripper_left_joint_L1" coef="1.0"/>
+        </fixed>
+    </tendon>
+    <actuator>
+
+        <general name="astribot_gripper_left_joint_L1" tendon="gripper_left_split" forcerange="-10 10"
+            ctrlrange="0 80" gainprm="2.36 0 0" biasprm="0 -100 -2"/>
+<!--        <general class="gripper_size1" name="astribot_gripper_left_joint_L1"  joint="astribot_gripper_left_joint_L1" />-->
+    </actuator>
+
+<!--    <sensor>-->
+<!--        <force name="astribot_arm_left_force_sensor" site="force_torque_sensor_left" />-->
+<!--        <torque name="astribot_arm_left_torque_sensor" site="force_torque_sensor_left" />-->
+<!--    </sensor>-->
+    
+</mujoco>

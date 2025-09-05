@@ -1,0 +1,18 @@
+<mujoco>
+
+    <actuator>
+        <general class="size3" name="astribot_arm_right_joint_1" joint="astribot_arm_right_joint_1" gainprm="1000" biasprm="0 -1000 -100"/>
+        <general class="size3" name="astribot_arm_right_joint_2" joint="astribot_arm_right_joint_2" gainprm="1000" biasprm="0 -1000 -100"/>
+        <general class="size3" name="astribot_arm_right_joint_3" joint="astribot_arm_right_joint_3" gainprm="1000" biasprm="0 -1000 -100"/>
+        <general class="size2" name="astribot_arm_right_joint_4" joint="astribot_arm_right_joint_4" gainprm="500" biasprm="0 -500 -50"/>
+        <general class="size2" name="astribot_arm_right_joint_5" joint="astribot_arm_right_joint_5" gainprm="500" biasprm="0 -500 -50"/>
+        <general class="size1" name="astribot_arm_right_joint_6" joint="astribot_arm_right_joint_6" gainprm="200" biasprm="0 -200 -20"/>
+        <general class="size1" name="astribot_arm_right_joint_7" joint="astribot_arm_right_joint_7" gainprm="200" biasprm="0 -200 -20"/>
+    </actuator>
+
+    <sensor>
+        <force name="astribot_arm_right_force_sensor" site="force_torque_sensor_right" />
+        <torque name="astribot_arm_right_torque_sensor" site="force_torque_sensor_right" />
+    </sensor>
+    
+</mujoco>

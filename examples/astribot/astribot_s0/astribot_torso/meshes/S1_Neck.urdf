@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="S1_Neck">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.00052748 3.2949E-05 0.022014"
+        rpy="0 0 0" />
+      <mass
+        value="0.71068" />
+      <inertia
+        ixx="0.00028327"
+        ixy="-1.3471E-11"
+        ixz="-1.8768E-09"
+        iyy="0.00023254"
+        iyz="1.0089E-07"
+        izz="0.00042513" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://S1_Neck/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://S1_Neck/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="star_neck_link_1">
+    <inertial>
+      <origin
+        xyz="-5.3693E-06 -0.0010707 0.062586"
+        rpy="0 0 0" />
+      <mass
+        value="0.105" />
+      <inertia
+        ixx="1.6792E-05"
+        ixy="-1.6119E-08"
+        ixz="3.3671E-08"
+        iyy="1.9787E-05"
+        iyz="1.5413E-07"
+        izz="2.1755E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://S1_Neck/meshes/star_neck_link_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://S1_Neck/meshes/star_neck_link_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="star_neck_joint_1"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="star_neck_link_1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="star_neck_link_2">
+    <inertial>
+      <origin
+        xyz="0.0077215 -0.00061344 0.13781"
+        rpy="0 0 0" />
+      <mass
+        value="1.1232" />
+      <inertia
+        ixx="0.0028377"
+        ixy="1.942E-07"
+        ixz="0.00032877"
+        iyy="0.0023298"
+        iyz="-5.8349E-07"
+        izz="0.0021319" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://S1_Neck/meshes/star_neck_link_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://S1_Neck/meshes/star_neck_link_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="star_neck_joint_2"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0798"
+      rpy="0 0 0" />
+    <parent
+      link="star_neck_link_1" />
+    <child
+      link="star_neck_link_2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>

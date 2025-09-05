@@ -1,0 +1,20 @@
+<mujocoinclude>
+    <asset>
+        <mesh name="astribot_torso_base_link" file="astribot_s0/astribot_torso/meshes/astribot_torso_base_link.STL"/>
+        <mesh name="astribot_torso_link_1" file="astribot_s0/astribot_torso/meshes/astribot_torso_Link1.STL"/>
+        <mesh name="astribot_torso_link_2" file="astribot_s0/astribot_torso/meshes/astribot_torso_Link2.STL"/>
+        <mesh name="astribot_torso_link_3" file="astribot_s0/astribot_torso/meshes/astribot_torso_Link3.STL"/>
+        <mesh name="astribot_torso_link_4" file="astribot_s0/astribot_torso/meshes/astribot_torso_Link4.STL"/>
+        <mesh name="astribot_torso_link_1ID" file="astribot_s0/astribot_torso/meshes/astribot_torso_link1ID.STL"/>
+        <mesh name="astribot_torso_link_2ID" file="astribot_s0/astribot_torso/meshes/astribot_torso_link2ID.STL"/>
+        <mesh name="astribot_torso_link_4ID" file="astribot_s0/astribot_torso/meshes/astribot_torso_link4ID.STL"/>
+        <mesh name="astribot_head_link" file="astribot_s0/astribot_torso/meshes/astribot_head.stl" scale="0.1 0.1 0.1"/>
+
+        <mesh name="astribot_head_base_link" file="astribot_s0/astribot_torso/meshes/astribot_head_base_link.STL" />
+        <mesh name="astribot_head_link_1" file="astribot_s0/astribot_torso/meshes/astribot_head_link_1.STL" />
+        <mesh name="astribot_head_link_2" file="astribot_s0/astribot_torso/meshes/astribot_head_link_2.STL" />
+
+      </asset>
+
+
+</mujocoinclude>

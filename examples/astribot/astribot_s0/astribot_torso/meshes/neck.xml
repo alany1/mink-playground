@@ -1,0 +1,21 @@
+<mujoco model="S1_Neck">
+  <compiler angle="radian"/>
+  <asset>
+    <mesh name="base_link" file="base_link.STL"/>
+    <mesh name="star_neck_link_1" file="star_neck_link_1.STL"/>
+    <mesh name="star_neck_link_2" file="star_neck_link_2.STL"/>
+  </asset>
+  <worldbody>
+    <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="base_link"/>
+    <body name="star_neck_link_1">
+      <inertial pos="-5.3693e-06 -0.0010707 0.062586" quat="0.0253074 0.708948 0.0295537 0.704186" mass="0.105" diaginertia="2.17672e-05 1.97751e-05 1.67917e-05"/>
+      <joint name="star_neck_joint_1" pos="0 0 0" axis="0 0 1" limited="false"/>
+      <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="star_neck_link_1"/>
+      <body name="star_neck_link_2" pos="0 0 0.0798">
+        <inertial pos="0.0077215 -0.00061344 0.13781" quat="0.982472 -0.000916769 -0.186407 -0.000200305" mass="1.1232" diaginertia="0.00296712 0.0023298 0.00200248"/>
+        <joint name="star_neck_joint_2" pos="0 0 0" axis="0 1 0" limited="false"/>
+        <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="star_neck_link_2"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

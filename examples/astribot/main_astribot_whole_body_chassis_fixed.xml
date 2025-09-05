@@ -1,0 +1,97 @@
+
+<mujoco model="astribot_whole_body">
+    
+	<include file="assets/common_asset.xml"></include>
+
+	<include file="astribot_s0/astribot_arm_asset.xml"/>
+	<include file="astribot_s0/astribot_gripper/astribot_gripper_asset.xml"/>
+	<include file="astribot_s0/astribot_torso/astribot_torso_asset.xml"/>
+	<include file="astribot_s0/astribot_chassis/astribot_chassis_asset.xml"/>
+<!--	<include file="astribot_s0/astribot_torso_asset.xml"/>-->
+<!--	<include file="robotiq_2f85/2f85_asset.xml"/>-->
+
+<!--	<include file="robotiq_2f85/2f85_right/2f85_right_contact.xml"/>-->
+<!--	<include file="robotiq_2f85/2f85_left/2f85_left_contact.xml"/>-->
+
+<!--    <include file="worldbody/astribot_arm_sence_1_asset.xml"/>-->
+<!--	 <include file="worldbody/mujoco_scanned_objects/all_asset.xml"/>-->
+
+	<worldbody>
+		<light pos="0 0 2.0" dir="0 0 -1" directional="true"/>
+    	<geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
+<!--		<geom pos="1 0 0.4" size="2.4 2.6 0.01" type="plane" material="groundplane"/>-->
+<!--		<geom pos="-0.2 0 0.06" size="0.4 0.3 0.06" rgba="1 1 1 1" type="box" />-->
+		<camera pos="2.107 0.011 1.6" xyaxes="-0.001 1.000 0.000 -0.277 -0.000 0.961"/>
+
+		<!--mocap="true"-->
+		<body name="torso_base" pos="-0.2 0.0 0.001" >
+<!--			<freejoint name="root"/>-->
+			<camera name="head" pos="0.0 0 1.0" euler="0 -0.6 -1.5709"/>
+			<camera name="trackcom_cam" mode="trackcom" pos="3.0 -3.0 1.0" euler="1.57 0.7 -0." />
+<!--			<geom name="base" type="box" pos="0 0 0.05 " size="0.3 0.3 .05 " rgba=".5 .5 1 0.8" mass="30"/>-->
+<!--			<geom class="Widget" rgba="1 1 1 0.2" pos="0 0 0.1" euler="0 0 0" type="capsule" size="0.12 0.01"  />-->
+<!--			<geom class="Widget" rgba="1 1 1 0.2" pos="-0.15 0 -0.4" euler="0 0 0" type="box" size="0.05 0.05 0.6"  />-->
+
+			<include file="astribot_s0/astribot_chassis/astribot_chassis_model.xml"></include>
+
+			<include file="astribot_s0/astribot_torso/astribot_torso_model_with_arm_gripper.xml"></include>
+
+
+<!--			<geom class="Widget" rgba="1 1 1 0.2" pos="0 0 -0.15" euler="0 0 0" type="capsule" size="0.05 0.1"  />-->
+
+<!--			<freejoint/>-->
+		</body>
+
+		<include file="astribot_s0/astribot_arm/astribot_arm_left/astribot_arm_left_endpoint_body.xml"></include>
+		<include file="astribot_s0/astribot_arm/astribot_arm_right/astribot_arm_right_endpoint_body.xml"></include>
+		<include file="astribot_s0/astribot_torso/astribot_torso_endpoint_body.xml"></include>
+		<include file="astribot_s0/astribot_chassis/astribot_chassis_endpoint_body.xml"></include>
+
+<!--		<include file="worldbody/astribot_arm_sence_1_model.xml"></include>-->
+<!--		<include file="worldbody/astribot_arm_sence_1_model_simple.xml"></include>-->
+		<include file="worldbody/collision_point_model.xml"></include>
+<!--		<include file="worldbody/simpleTable/simpleTable_asset.xml"></include>-->
+<!--		<include file="worldbody/simpleTable/simpleTable_body.xml"></include>-->
+
+	</worldbody>
+
+
+	<include file="astribot_s0/astribot_gripper/astribot_gripper_left/astribot_gripper_left_contact.xml"></include>
+	<include file="astribot_s0/astribot_gripper/astribot_gripper_right/astribot_gripper_right_contact.xml"></include>
+
+	<include file="astribot_s0/astribot_chassis/astribot_chassis_actuator.xml"></include>
+	<include file="astribot_s0/astribot_torso/astribot_torso_actuator.xml"></include>
+	<include file="astribot_s0/astribot_arm/astribot_arm_left/astribot_arm_left_actuator.xml"></include>
+	<include file="astribot_s0/astribot_gripper/astribot_gripper_left/astribot_gripper_left_actuator.xml"></include>
+	<include file="astribot_s0/astribot_arm/astribot_arm_right/astribot_arm_right_actuator.xml"></include>
+	<include file="astribot_s0/astribot_gripper/astribot_gripper_right/astribot_gripper_right_actuator.xml"></include>
+
+<!--	<include file="inspire_five_right/inspire_five_right_actuator.xml"></include>-->
+	<keyframe>
+<!--		<key name="home"-->
+<!--		qpos='0.00654573 -0.000265898 -4.64794e-06 1 -5.38888e-09 -2.0803e-06 0.000654025 2.27237e-08 -2.28179e-08 0.999333 0.00485627 0.0361922 -0.000157322 0.999088 0.00461831 0.0424556 -0.000121586 0.00172228 0.00169158 0.00163663 -2.30253e-08 -1.5857e-13 3.96065e-07-->
+<!--		-1.55508 6.26574e-05 0.000821201 7.61276e-06 -4.31058e-05 5.09891e-06 -0.00180376-->
+<!--		8.21067e-05-->
+<!--		-8.05266e-05 -0.000138615 -6.36324e-05 -9.71296e-05 -0.000117955 8.51331e-05 0.00296919-->
+<!--		4.08326e-06-->
+<!--		2.2767e-05 -2.15235e-07 0.000172101 -8.91406e-06 0.00035312 0.000307163 -0.000401906 0.000628699 -0.000584379 0.000676925-->
+<!--		0.3 0 -0.000725631 1 0 0 0'-->
+
+<!--		ctrl="0 0-->
+<!--		   0 0 0 0-->
+<!--		   0 0-->
+<!--		   0 0 -1.57 1.57 0 0 0-->
+<!--		   0-->
+<!--		   0 0 1.57 1.57 0 0 0-->
+<!--		   0"-->
+<!--		/>-->
+<!--        <key name="home"-->
+<!--			 qpos="0 0 0 0 0 0 0-->
+<!--			  	   0 0 0 0 0 0 0 0-->
+<!--			  	   0 -0.5 0.01 0 0 0 0-->
+<!--				   0 0 0 0 0 0 0-->
+<!--				   0 0 0 0 0 0 0-->
+<!--				   0 0 0 0 0 0 0"-->
+<!--            ctrl="0 0 0 0 0 0 0 0"/>-->
+      </keyframe>
+</mujoco>

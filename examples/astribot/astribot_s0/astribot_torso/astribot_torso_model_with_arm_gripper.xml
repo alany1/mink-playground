@@ -1,0 +1,92 @@
+<mujoco model="astribot_torso">
+
+    
+
+    <body name="astribot_torso_base" pos="0.0 0 .058">
+        <site name="astribot_torso_base" pos="-0.0 0 0.0" size="0.01 0.01 0.01" rgba="1 0 0 1" type="sphere"></site>
+        <geom class="Widget" rgba="0 1 0 0.1" pos="0 0 0.12" euler="0 0 0" type="box" size="0.36 0.3 0.12" mass="0.001" />
+        <geom name="astribot_torso_base" contype="0" conaffinity="0" type="mesh"  pos="-0.0187 0 0" euler="-1.57 -1.57 0 " rgba="1 1 1 1" mass="0.001" mesh="astribot_torso_base_link"/>
+<!--        <geom name="astribot_torso_base" type="sphere"  size=".08  " rgba=".3 .2 0.2 0.8" mass="0.001"/>-->
+<!--        <joint name="aaa" pos="0 0 0" axis="0 1 0" range="-3.14 3.14" />-->
+        <!--   小腿   -->
+        
+        <body name="astribot_torso_link_1" pos="0.0000001 0 0.090" euler="-1.57 0 1.57 ">
+            <joint class="torso_size1" name="astribot_torso_joint_1" pos="0 0 0" axis="0 0 1 " range="-3.14 3.14" />
+            <geom class="Widget" rgba="0 1 0 0.1" pos="-0.22 0.0 0.0" euler="0 1.5709 0" type="capsule" size="0.12 0.15"  />
+            <geom name="astribot_torso_geom_1" contype="0" conaffinity="0" type="mesh"  rgba="1 1 1 1" mass="4.495821" mesh="astribot_torso_link_1ID"/>
+            <inertial pos="-0.176256 -0.018787 -1.1108e-07" quat="0.503559 0.503578 0.496416 0.496397" mass="4.49582" diaginertia="0.100778 0.082087 0.0292793"/>
+
+              <!--   大腿   -->
+            <body name="astribot_torso_link_2" pos=" -.39 0 0" euler="0 0 0 ">
+                <!--          <inertial pos="0 0. 0.132 " mass="10" diaginertia="1 1 1" />-->
+<!--                <geom name="astribot_torso_geom_2" type="capsule"  size=".08  " fromto="0 0 0.08 0 0 .315" rgba="1 1 1 0.5" mass="5"/>-->
+                <geom name="astribot_torso_geom_2" contype="0" conaffinity="0" type="mesh"  rgba="1 1 1 1" mass="8.761401" mesh="astribot_torso_link_2ID"/>
+                <inertial pos="-0.206862 0.037802 0.000706" quat="-0.170544 0.705795 -0.0938477 0.681146" mass="8.7614" diaginertia="0.194427 0.192567 0.026426"/>
+                <joint class="torso_size1" name="astribot_torso_joint_2" pos="0 0 0" axis="0 0 1" range="-3.14 3.14" />
+                <geom class="Widget" rgba="0 1 0 0.1" pos="-0.24 0.03 0.0" euler="0 1.5709 0" type="capsule" size="0.12 0.15"  />
+                <!--   上身   -->
+                <body name="astribot_torso_link_3" pos="-.41 0 0 " euler=" 0 0 0 "  >
+                    <geom name="astribot_torso_geom_3" contype="0" conaffinity="0" type="mesh" rgba="1 1 1 1" mass="0.530681" mesh="astribot_torso_link_3"/>
+                    <inertial pos="-0.018455 -0.000233 -0.00024" quat="0.487782 0.519743 0.51126 0.480155" mass="0.530681" diaginertia="0.000702065 0.000517253 0.000453683"/>
+                    <joint class="torso_size1" name="astribot_torso_joint_3" pos="0 0 .0" axis="0 0 1" range="-3.14 3.14" />
+                    <geom class="Widget" rgba="0 1 0 0.1" pos="-0.24 0.0 0.0" euler="0 1.5709 0" type="capsule" size="0.10 0.18"  />
+
+                    <body name="astribot_torso_link_4" pos="0 0 0" euler="1.57 -1.57 0 ">
+<!--                        <geom name="astribot_torso_geom_4" contype="0" conaffinity="0" type="capsule" size=".08" fromto="0 0 0.15 0 0 0.3" rgba="1 1 1 0.5" mass="4.560984"/>-->
+                        <geom name="astribot_torso_geom_4" contype="0" conaffinity="0" type="mesh" rgba="1 1 1 1" mass="4.560984" mesh="astribot_torso_link_4ID"/>
+<!--                        <inertial pos="2.5e-05 1.3e-05 0.214732" quat="0.903041 0.00018356 0.000157272 0.429554" mass="4.56098" diaginertia="0.0464078 0.0463833 0.00563999"/>-->
+                        <joint class="torso_size1" name="astribot_torso_joint_4" pos="0 0 .0" axis="0 0 1" range="-3.14 3.14" />
+
+                        <body name="camera_1" pos="0.15 0 .395">
+
+                            <camera name="torso_cam_1" pos="-0.0 0.0 0.0" xyaxes="0.000 -1.000 0.000 -0.0 0.000 1.0" fovy="60"/>
+    <!--                        <site name="camera_line_1" type="capsule"  size=".01  " fromto="0.0 0 0.0 1.0 1.0 0.57"/>-->
+    <!--                        <site name="camera_line_2" type="capsule"  size=".01  " fromto="0.0 0 0.0 1.0 1.0 -0.57"/>-->
+    <!--                        <site name="camera_line_3" type="capsule"  size=".01  " fromto="0.0 0 0.0 1.0 -1.0 0.57"/>-->
+    <!--                        <site name="camera_line_4" type="capsule"  size=".01  " fromto="0.0 0 0.0 1.0 -1.0 -0.57"/>-->
+                        </body>
+
+
+
+
+                        <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="astribot_head_base_link"/>
+
+                        <body name="astribot_head_link_1" pos="0 0 .5">
+                            <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="astribot_head_link_1"/>
+                            <inertial pos="-5.3693e-06 -0.0010707 0.062586" quat="0.0253074 0.708948 0.0295537 0.704186" mass="0.105" diaginertia="2.17672e-05 1.97751e-05 1.67917e-05"/>
+
+                            <joint name="astribot_head_joint_1" pos="0 0 .0" axis="0 0 1" range="-3.14 3.14" />
+
+<!--                            <inertial pos="0.0 0.0 0.0"  quat="0.0 0.0 -0.0 1.0" mass="1.0" diaginertia="0.001 0.001 0.001"/>-->
+
+                            <body name="astribot_head_link_2" pos="0 0 0.0798">
+                                <geom class="Widget" rgba="0 1 0 0.1" pos="-0.02 0.0 0.13" euler="0 0 0" type="capsule" size="0.13 0.01"  />
+                                <inertial pos="0.0077215 -0.00061344 0.13781" quat="0.982472 -0.000916769 -0.186407 -0.000200305" mass="1.1232" diaginertia="0.00296712 0.0023298 0.00200248"/>
+                                <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="astribot_head_link_2"/>
+
+                                <joint name="astribot_head_joint_2" pos="0 0 -0.00" axis="0 1 0" range="-3.14 3.14" />
+
+
+                                <camera name="head_cam_1" pos="0.09 0.0 0.08" xyaxes="0.000 -1.000 0.000 -0.0 0.000 -1.0" fovy="60"/>
+
+                            </body>
+
+                        </body>
+
+                        <site name="torso" pos="0 0 0.5" size="0.01 0.01 0.01" rgba="1 0 0 1" type="sphere"></site>
+
+                        <body name="astribot_arm_left" pos="0 0.06055 0.5" euler="-1.5707963 0 -1.5707963">
+                            <include file="astribot_s0/astribot_arm/astribot_arm_left/astribot_arm_left_model_with_gripper.xml"></include>
+                        </body>
+
+                        <body name="astribot_arm_right" pos="0 -0.06055 0.5" euler="1.5707963 -0 1.5707963">
+                            <include file="astribot_s0/astribot_arm/astribot_arm_right/astribot_arm_right_model_with_gripper.xml"></include>
+                        </body>
+
+                    </body>
+                  </body>
+            </body>
+        </body>
+    </body>
+</mujoco>
+

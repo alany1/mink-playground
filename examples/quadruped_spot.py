@@ -23,24 +23,24 @@ if __name__ == "__main__":
 
     feet = ["FL", "FR", "HR", "HL"]
 
-    base_task = mink.FrameTask(
-        frame_name="body",
-        frame_type="body",
-        position_cost=1.0,
-        orientation_cost=1.0,
-    )
+    # base_task = mink.FrameTask(
+    #     frame_name="body",
+    #     frame_type="body",
+    #     position_cost=1.0,
+    #     orientation_cost=1.0,
+    # )
 
-    posture_task = mink.PostureTask(model, cost=1e-5)
+    # posture_task = mink.PostureTask(model, cost=1e-5)
 
-    feet_tasks = []
-    for foot in feet:
-        task = mink.FrameTask(
-            frame_name=foot,
-            frame_type="geom",
-            position_cost=1.0,
-            orientation_cost=0.0,
-        )
-        feet_tasks.append(task)
+    # feet_tasks = []
+    # for foot in feet:
+    #     task = mink.FrameTask(
+    #         frame_name=foot,
+    #         frame_type="geom",
+    #         position_cost=1.0,
+    #         orientation_cost=0.0,
+    #     )
+    #     feet_tasks.append(task)
 
     eef_task = mink.FrameTask(
         frame_name="EE",
@@ -49,7 +49,8 @@ if __name__ == "__main__":
         orientation_cost=1.0,
     )
 
-    tasks = [base_task, posture_task, *feet_tasks, eef_task]
+    # tasks = [base_task, posture_task, *feet_tasks, eef_task]
+    tasks = [eef_task]
 
     ## =================== ##
 
@@ -72,7 +73,7 @@ if __name__ == "__main__":
         configuration.update(data.qpos)
         mujoco.mj_forward(model, data)
 
-        posture_task.set_target_from_configuration(configuration)
+        # posture_task.set_target_from_configuration(configuration)
         for foot in feet:
             mink.move_mocap_to_frame(model, data, f"{foot}_target", foot, "geom")
         mink.move_mocap_to_frame(model, data, "body_target", "body", "body")
@@ -80,9 +81,9 @@ if __name__ == "__main__":
 
         rate = RateLimiter(frequency=500.0, warn=False)
         while viewer.is_running():
-            base_task.set_target(mink.SE3.from_mocap_id(data, base_mid))
-            for i, task in enumerate(feet_tasks):
-                task.set_target(mink.SE3.from_mocap_id(data, feet_mid[i]))
+            # base_task.set_target(mink.SE3.from_mocap_id(data, base_mid))
+            # for i, task in enumerate(feet_tasks):
+            #     task.set_target(mink.SE3.from_mocap_id(data, feet_mid[i]))
             eef_task.set_target(mink.SE3.from_mocap_id(data, eef_mid))
 
             # Compute velocity and integrate into the next configuration.
@@ -94,8 +95,8 @@ if __name__ == "__main__":
                 ori_achieved = True
                 for task in [
                     eef_task,
-                    base_task,
-                    *feet_tasks,
+                    # base_task,
+                    # *feet_tasks,
                 ]:
                     err = eef_task.compute_error(configuration)
                     pos_achieved &= bool(np.linalg.norm(err[:3]) <= pos_threshold)

@@ -1,0 +1,21 @@
+<mujoco model="all-URDF">
+  <compiler angle="radian"/>
+  <asset>
+    <mesh name="base_link" file="base_link.STL"/>
+    <mesh name="L1_Link" file="L1_Link.STL"/>
+    <mesh name="L11_Link" file="L11_Link.STL"/>
+    <mesh name="L2_Link" file="L2_Link.STL"/>
+    <mesh name="R1_Link" file="R1_Link.STL"/>
+    <mesh name="R11_Link" file="R11_Link.STL"/>
+    <mesh name="R2_Link" file="R2_Link.STL"/>
+  </asset>
+  <worldbody>
+    <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="base_link"/>
+    <geom pos="0.013001 0 0.0537" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="L1_Link"/>
+    <geom pos="0.049001 0 0.085449" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="L11_Link"/>
+    <geom pos="0.033 0 0.0537" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="L2_Link"/>
+    <geom pos="-0.012999 0 0.0537" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="R1_Link"/>
+    <geom pos="-0.048999 0 0.085449" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="R11_Link"/>
+    <geom pos="-0.032999 0 0.0537" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="R2_Link"/>
+  </worldbody>
+</mujoco>

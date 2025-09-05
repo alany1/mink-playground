@@ -1,0 +1,90 @@
+<mujoco model="all-URDF">
+  <compiler angle="radian"/>
+
+    <default class="main">
+        <joint armature="0.01" damping="0.001"/>
+        <general ctrllimited="true" forcelimited="true"  ctrlrange="-1.14 0" biastype="affine" forcerange="-50 50" gainprm="100" biasprm="0 -100 -10"/>
+
+        <site size="0.005 0 0" rgba="0.4 0.9 0.4 1" />
+
+    </default>>
+  <asset>
+
+    <mesh name="gripper_base_link" file="meshes/base_link.STL"/>
+    <mesh name="gripper_L1_Link" file="meshes/L1_Link.STL"/>
+    <mesh name="gripper_L11_Link" file="meshes/L11_Link.STL"/>
+    <mesh name="gripper_L2_Link" file="meshes/L2_Link.STL"/>
+    <mesh name="gripper_R1_Link" file="meshes/R1_Link.STL"/>
+    <mesh name="gripper_R11_Link" file="meshes/R11_Link.STL"/>
+    <mesh name="gripper_R2_Link" file="meshes/R2_Link.STL"/>
+  </asset>
+  <worldbody>
+<!--    夹爪基座-->
+    <body name="astribot_gripper_base" pos="0 0 .0">
+      <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_base_link"/>
+<!--        左手指平行连杆1-->
+      <body name="gripper_L1_Link" pos="0.013001 0 0.0537">
+          <joint name="gripper_L1_joint" pos="0 0 0" axis="0 -1 0" range="0 1.14 " />
+          <geom name="gripper_L1_geom" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_L1_Link"/>
+          <body name="gripper_L11_Link" pos="0.036 0 0.031749">
+              <joint name="gripper_L11_joint" pos="0 0 0" axis="0 1 0" range="-3.14 3.14" />
+              <geom name="gripper_L11_geom" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_L11_Link"/>
+<!--              <body name="gripper_L11_anchor" pos="0.02 0 0.0"/>-->
+
+          </body>
+      </body>
+<!--        左手指平行连杆2-->
+      <body name="gripper_L2_Link" pos=".033 0 0.0537">
+          <joint name="gripper_L2_joint" pos="0 0 0" axis="0 1 0" range="-3.14 3.14" />
+          <geom name="gripper_L2_geom" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_L2_Link"/>
+<!--          <body name="gripper_L2_anchor" pos="0.036 0 0.031749"/>-->
+      </body>
+
+<!--        右手指平行连杆1-->
+      <body name="gripper_R1_Link" pos="-0.013001 0 0.0537">
+          <joint name="gripper_R1_joint" pos="0 0 0" axis="0 1 0" range="0 1.14 " />
+          <geom name="gripper_R1_geom" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_R1_Link"/>
+          <body name="gripper_R11_Link" pos="-0.036 0 0.031749">
+              <joint name="gripper_R11_joint" pos="0 0 0" axis="0 1 0" range="-3.14 3.14" />
+              <geom name="gripper_R11_geom" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_R11_Link"/>
+          </body>
+      </body>
+<!--        右手指平行连杆2-->
+      <body name="gripper_R2_Link" pos="-0.033 0 0.0537">
+          <joint name="gripper_R2_joint" pos="0 0 0" axis="0 1 0" range="-3.14 3.14" />
+          <geom name="gripper_R2_geom" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_R2_Link"/>
+      </body>
+    </body>>
+  </worldbody>
+
+    <contact>
+        <exclude body1="astribot_gripper_base" body2="gripper_L2_Link"/>
+        <exclude body1="astribot_gripper_base" body2="gripper_L1_Link"/>
+        <exclude body1="gripper_L1_Link" body2="gripper_L2_Link"/>
+        <exclude body1="gripper_L1_Link" body2="gripper_L11_Link"/>
+        <exclude body1="gripper_L2_Link" body2="gripper_L11_Link"/>
+
+
+        <exclude body1="astribot_gripper_base" body2="gripper_R2_Link"/>
+        <exclude body1="astribot_gripper_base" body2="gripper_R1_Link"/>
+        <exclude body1="gripper_R1_Link" body2="gripper_R2_Link"/>
+        <exclude body1="gripper_R1_Link" body2="gripper_R11_Link"/>
+        <exclude body1="gripper_R2_Link" body2="gripper_R11_Link"/>
+
+    </contact>
+
+    <equality>
+<!--            <connect body1='gripper_L2_Link'  body2='gripper_L11_Link'        anchor='0.036 0 0.031749'/>-->
+<!--            <connect body1='gripper_R2_Link'  body2='gripper_R11_Link'        anchor='-0.036 0 0.031749'/>-->
+        <joint joint1="gripper_R1_joint" joint2="gripper_L1_joint" />
+        <joint joint1="gripper_R1_joint" joint2="gripper_R2_joint" />
+        <joint joint1="gripper_R1_joint" joint2="gripper_R11_joint" polycoef="0 -1 0 0 0"/>
+
+        <joint joint1="gripper_L1_joint" joint2="gripper_L2_joint" polycoef="0 -1 0 0 0"/>
+        <joint joint1="gripper_L1_joint" joint2="gripper_L11_joint" />
+    </equality>
+    <actuator>
+        <general name="gripper_L1_joint"  joint="gripper_L1_joint" ctrllimited="true" forcelimited="true"  ctrlrange="0 1.14 " />
+    </actuator>
+
+</mujoco>

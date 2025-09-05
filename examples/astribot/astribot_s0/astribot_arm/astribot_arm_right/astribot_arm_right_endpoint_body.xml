@@ -1,0 +1,17 @@
+<worldbody>
+    <!-- robotiq 2f85 base_mount -->
+    <body name="endpoint_desired_astribot_arm_right" >
+        <freejoint/>
+        <body pos="0 0.1 0" euler="1.5707963 0 0">
+            <geom type="mesh" mass="0.00001" mesh="gripper_base_link" contype="0" conaffinity="0" group="1" rgba="0 0 0.6 0.5"/>
+        </body>
+    </body>
+
+    <body name="remote_control_astribot_arm_right">
+        <freejoint/>
+        <body pos="0 0.1 0" euler="1.5707963 0 0">
+            <geom type="mesh" mass="0.00001" mesh="gripper_base_link" contype="0" conaffinity="0" group="1" rgba="0 0.6 0 0.5"/>
+        </body>
+    </body>
+
+</worldbody>

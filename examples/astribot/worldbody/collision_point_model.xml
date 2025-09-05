@@ -1,0 +1,27 @@
+<worldbody>
+    <body pos="0.3 0.0 -0.2" name="obstacle_sphere">
+        <freejoint/>
+<!--        # set gravity to 0 to avoid the sphere falling down-->
+        <geom type="sphere" size="0.1" mass="0.000001" contype="0" conaffinity="0" group="1" rgba="1 1 1 0.5" />
+
+    </body>
+    
+    <body pos="0.3 0.5 -0.2" name="obstacle_cylinder">
+        <freejoint/>
+        <geom type="capsule" size="0.1 0.1" euler="1.5709 0 0" mass="0.000001" contype="0" conaffinity="0" group="1" rgba="1 1 1 0.5" />
+    </body>
+
+    <body name="mujoco_object" pos="0.5 -0.0 0.01">
+      <freejoint/>
+      <geom type="box" size="0.02 0.1 0.02" rgba="0.0 0.8 .0 1" friction=".5" priority="1" mass = "0.05"/>
+    </body>
+
+    <body pos="1.0 -0.5 0" name="collison_point_1" mocap="true">
+        <site name="collison_point_1" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0.5 0 1" type="sphere"></site>
+    </body>
+
+    <body pos="1.0 0.5 0" name="collison_point_2" mocap="true">
+        <site name="collison_point_2" pos="0 0 0" size="0.02 0.02 0.02" rgba="1 0 0 1" type="sphere"></site>
+    </body>
+
+</worldbody>

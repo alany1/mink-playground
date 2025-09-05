@@ -1,0 +1,7 @@
+<mujocoinclude>
+    <default class="torso_size1">
+        <joint limited="true" axis="0 0 1" armature="0.0" damping="0"/>
+        <general ctrllimited="true" forcelimited="true" forcerange="-265 265"  ctrlrange="-1.57 1.57" dyntype="none" biastype="affine"/>
+    </default>
+
+</mujocoinclude>

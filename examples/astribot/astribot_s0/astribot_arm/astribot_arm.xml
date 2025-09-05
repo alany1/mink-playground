@@ -1,0 +1,46 @@
+<mujoco model="astribot_arm">
+  <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="base_link"/>
+  <geom type="mesh" rgba="1 1 1 1" mesh="base_link"/>
+  <body name="astribot_arm_link_1" pos="0 0 0.1115" gravcomp="0">
+    <inertial pos="0.00041755 1.7e-05 -0.060544" quat="0.526299 0.413435 -0.579549 0.464977" mass="0.74365" diaginertia="0.00131052 0.00126333 0.00122715"/>
+    <joint name="astribot_arm_joint_1" pos="0 0 0" axis="0 0 1" range="-2.356 2.356"/>
+    <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_1"/>
+    <geom type="mesh" rgba="1 1 1 1" mesh="astribot_arm_link_1"/>
+    <body name="astribot_arm_link_2" pos="0 0 0" quat="0.707105 -0.707108 0 0" gravcomp="0">
+      <inertial pos="-0.007029 -0.095398 0.000671" quat="0.714617 0.69874 -0.00234812 0.0328403" mass="1.6616" diaginertia="0.00803032 0.00719965 0.00237903"/>
+      <joint name="astribot_arm_joint_2" pos="0 0 0" axis="0 0 1" range="-0.534 1.571"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="astribot_arm_left_link_2"/>
+      <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="astribot_arm_left_link_2"/>
+      <body name="astribot_arm_link_3" pos="0 -0.05 0" quat="0.499998 -0.5 -0.500002 0.5" gravcomp="0">
+        <inertial pos="0.002777 0.000142 0.16567" quat="0.709274 -0.0206378 -0.0260201 0.70415" mass="2.3812" diaginertia="0.020566 0.019812 0.00279898"/>
+        <joint name="astribot_arm_joint_3" pos="0 0 0" axis="0 0 1" range="-3.4034 3.4034"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_3"/>
+        <geom type="mesh" rgba="1 1 1 1" mesh="astribot_arm_link_3"/>
+        <body name="astribot_arm_link_4" pos="0.035 0 0.34385" quat="0.707105 -0.707108 0 0" gravcomp="0">
+          <inertial pos="-0.000424 -0.007124 0.000156" quat="0.659362 0.73968 0.112713 -0.0735547" mass="0.46211" diaginertia="0.000656697 0.00063483 0.000545472"/>
+          <joint name="astribot_arm_joint_4" pos="0 0 0" axis="0 0 1" range="0 2.618"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_4"/>
+          <geom type="mesh" rgba="1 1 1 1" mesh="astribot_arm_link_4"/>
+          <body name="astribot_arm_link_5" pos="0 0 0" quat="0.707105 0.707108 0 0" gravcomp="0">
+            <inertial pos="0.001163 -1.7e-05 0.159622" quat="0.714745 -0.0109274 -0.0186454 0.699052" mass="1.22712" diaginertia="0.00452848 0.00444989 0.000511636"/>
+            <joint name="astribot_arm_joint_5" pos="0 0 0" axis="0 0 1" range="-2.4435 2.4435"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_5"/>
+            <geom type="mesh" rgba="1 1 1 1" mesh="astribot_arm_link_5"/>
+            <body name="astribot_arm_link_6" pos="0 0 0.3" quat="0.707105 -0.707108 0 0" gravcomp="0">
+              <inertial pos="-0.0069357 0.00035468 -9.5173e-05" quat="0.707107 0 0 0.707107" mass="0.1645" diaginertia="0.000108 9.2e-05 6e-05"/>
+              <joint name="astribot_arm_joint_6" pos="0 0 0" axis="0 0 1" range="-1.5707 1.5707"/>
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_6"/>
+              <geom type="mesh" rgba="1 1 1 1" mesh="astribot_arm_link_6"/>
+              <body name="astribot_arm_link_7" pos="0 0 0" quat="0.707105 0 0.707108 0" gravcomp="0">
+                <inertial pos="8e-06 -0.013245 -0.026305" quat="0.390171 0.589717 -0.589717 0.390171" mass="0.095576" diaginertia="7.29487e-05 6.5e-05 3.40513e-05"/>
+                <joint name="astribot_arm_joint_7" pos="0 0 0" axis="0 0 1" range="-1.5709 1.5709"/>
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_7"/>
+                <geom type="mesh" rgba="1 1 1 1" mesh="astribot_arm_link_7"/>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </body>
+</mujoco>

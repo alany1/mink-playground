@@ -1,0 +1,31 @@
+<worldbody>
+    <!-- robotiq 2f85 base_mount -->
+    <body name="endpoint_desired_astribot_torso" >
+        <freejoint/>
+        <body pos="0 0 0" euler="0 0 0">
+            <geom mass="0.00001" type="box" size="0.02 0.02 0.02" contype="0" conaffinity="0" group="1" rgba="0 0 0.6 0.5"/>
+        </body>
+    </body>
+
+    <body name="remote_control_astribot_torso">
+        <freejoint/>
+        <body pos="0 0 0" euler="0 0 0">
+            <geom mass="0.00001" type="box" size="0.02 0.02 0.02" contype="0" conaffinity="0" group="1" rgba="0 0.6 0 0.5"/>
+        </body>
+    </body>
+
+    <body name="endpoint_desired_astribot_head" >
+        <freejoint/>
+        <body pos="0 0 0.0" euler="0 0 0">
+            <geom mass="0.00001" type="box" size="0.02 0.02 0.02" contype="0" conaffinity="0" group="1" rgba="0 0 0.6 0.5"/>
+        </body>
+    </body>
+
+    <body name="remote_control_astribot_head">
+        <freejoint/>
+        <body pos="0 0 0.0" euler="0 0 0">
+            <geom mass="0.00001" type="box" size="0.02 0.02 0.02" contype="0" conaffinity="0" group="1" rgba="0 0.6 0 0.5"/>
+        </body>
+    </body>
+
+</worldbody>

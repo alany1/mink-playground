@@ -1,0 +1,39 @@
+<mujocoinclude>
+
+    <include file="worldbody/simpleTable/simpleTable_asset.xml"/>
+    <include file="worldbody/studyTable/studyTable_asset.xml"/>
+
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
+            height="3072"/>
+
+        <texture type="cube" name="wood" file="worldbody/simpleTable/textures/simpleTable_wood.png" />
+        <texture type="2d" name="wood2d" file="worldbody/simpleTable/textures/simpleTable_wood.png" />
+
+        <texture type="cube" name="foil" file="worldbody/door/silverRaw.png" />
+        <material name="MatWood" texture="wood" texrepeat="3 3" specular="0.4" shininess="0.1" />
+        <material name="MatFoil" texture="foil" specular="1" shininess="0.3" rgba="0.9 0.9 0.9 1" />
+
+		    <material name="wood" texture="wood2d" reflectance="0.008" rgba="1 1 1 1"/>
+
+    </asset>
+
+    <asset>
+        <texture name="mug" file="worldbody/mug/mug.png" type="2d"/>
+        <material name="mug" texture="mug" specular="1" shininess="1"/>
+        <mesh file="worldbody/mug/mug.obj" scale=".01 .01 .01"/>
+        <material name="floor" reflectance=".1"/>
+      </asset>
+
+    <default>
+        <default class="collision_mug">
+          <geom type="box" group="3"/>
+          <default class="cup_mug">
+            <geom size="0.0026 0.00704 0.033"/>
+          </default>
+          <default class="handle_mug">
+            <geom size="0.0025 0.00328 0.0055"/>
+          </default>
+        </default>
+      </default>
+</mujocoinclude>

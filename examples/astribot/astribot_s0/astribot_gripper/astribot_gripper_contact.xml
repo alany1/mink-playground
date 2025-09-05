@@ -1,0 +1,32 @@
+<mujocoinclude>
+
+    <!--    2f85-->
+
+    <contact>
+        <exclude body1="astribot_gripper_base" body2="gripper_L2_Link"/>
+        <exclude body1="astribot_gripper_base" body2="gripper_L1_Link"/>
+        <exclude body1="gripper_L1_Link" body2="gripper_L2_Link"/>
+        <exclude body1="gripper_L1_Link" body2="gripper_L11_Link"/>
+        <exclude body1="gripper_L2_Link" body2="gripper_L11_Link"/>
+
+
+        <exclude body1="astribot_gripper_base" body2="gripper_R2_Link"/>
+        <exclude body1="astribot_gripper_base" body2="gripper_R1_Link"/>
+        <exclude body1="gripper_R1_Link" body2="gripper_R2_Link"/>
+        <exclude body1="gripper_R1_Link" body2="gripper_R11_Link"/>
+        <exclude body1="gripper_R2_Link" body2="gripper_R11_Link"/>
+
+    </contact>
+
+    <equality>
+<!--            <connect body1='gripper_L2_Link'  body2='gripper_L11_Link'        anchor='0.036 0 0.031749'/>-->
+<!--            <connect body1='gripper_R2_Link'  body2='gripper_R11_Link'        anchor='-0.036 0 0.031749'/>-->
+        <joint joint1="gripper_R1_joint" joint2="gripper_L1_joint" />
+        <joint joint1="gripper_R1_joint" joint2="gripper_R2_joint" />
+        <joint joint1="gripper_R1_joint" joint2="gripper_R11_joint" polycoef="0 -1 0 0 0"/>
+
+        <joint joint1="gripper_L1_joint" joint2="gripper_L2_joint" polycoef="0 -1 0 0 0"/>
+        <joint joint1="gripper_L1_joint" joint2="gripper_L11_joint" />
+    </equality>
+
+</mujocoinclude>
