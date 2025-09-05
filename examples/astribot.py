@@ -7,12 +7,13 @@ from loop_rate_limiters import RateLimiter
 import mink
 
 _HERE = Path(__file__).parent
-_XML = _HERE / "astribot" / "main_astribot_whole_body_chassis_fixed.xml"
+_XML = _HERE / "astribot" / "flattened_model.xml"
 
 
 if __name__ == "__main__":
     model = mujoco.MjModel.from_xml_path(_XML.as_posix())
-
+    # mujoco.mj_saveLastXML("flattened_model.xml", model)
+    
     configuration = mink.Configuration(model)
     hands = ["astribot_arm_left_tool_site"]#, "astribot_arm_right_tool_site"]
 
@@ -68,7 +69,6 @@ if __name__ == "__main__":
                 hand_task.set_target(mink.SE3.from_mocap_id(data, hands_mid[i]))
                 
             name = mujoco.mj_id2name(model, mujoco.mjtObj.mjOBJ_BODY, 1)
-            print('hell this is the name', name)  # → "pelvis"
 
 
             vel = mink.solve_ik(

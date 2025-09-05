@@ -1,0 +1,544 @@
+<mujoco model="astribot_whole_body">
+  <compiler angle="radian"/>
+
+  <option timestep="0.01" impratio="100" viscosity="0.1" integrator="implicit"/>
+
+  <size nkey="1"/>
+
+  <visual>
+    <global azimuth="120" elevation="-20" offwidth="480" offheight="640"/>
+    <quality offsamples="8"/>
+    <headlight diffuse="0.6 0.6 0.6" specular="0 0 0"/>
+    <map force="0.1" fogend="5" znear="0.1"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+  </visual>
+
+  <statistic extent="1.8" center="0.3 0 0.4"/>
+
+  <default>
+    <joint limited="true"/>
+    <site size="0.005 0 0" rgba="0.4 0.9 0.4 1"/>
+    <general ctrllimited="true" ctrlrange="-6.2831 6.2831" forcelimited="true" biastype="affine"/>
+    <default class="visual">
+      <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+    </default>
+    <default class="collision">
+      <geom type="capsule" group="3"/>
+      <default class="eef_collision">
+        <geom type="cylinder"/>
+      </default>
+    </default>
+    <default class="Widget">
+      <geom contype="0" conaffinity="0" group="2" rgba="1 1 1 1"/>
+    </default>
+    <default class="size3">
+      <joint armature="0.1" damping="10"/>
+      <general forcerange="-265 265"/>
+    </default>
+    <default class="size2">
+      <joint armature="0.1" damping="10"/>
+      <general forcerange="-142 142"/>
+    </default>
+    <default class="size1">
+      <joint armature="0.1" damping="10"/>
+      <general forcerange="-20 20"/>
+    </default>
+    <default class="free">
+      <joint type="free" limited="false"/>
+    </default>
+    <default class="torso_size1">
+      <joint armature="0.1" damping="10"/>
+      <general ctrlrange="-3.14 3.15" forcerange="-465 465"/>
+    </default>
+    <default class="chassis_size1">
+      <general ctrllimited="false" ctrlrange="-5 5" forcerange="-10 10"/>
+    </default>
+    <default class="gripper_size1">
+      <joint armature="0.02" damping="0.3"/>
+      <general ctrlrange="0 1.14" forcerange="-10 10" gainprm="100" biasprm="0 -100 -4"/>
+    </default>
+  </default>
+
+  <asset>
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+    <mesh name="astribot_arm_base_link" content_type="model/stl" file="astribot_s0/astribot_arm/meshes/base_link.STL"/>
+    <mesh name="astribot_arm_link_1" content_type="model/stl" file="astribot_s0/astribot_arm/meshes/astribot_arm_link_1.STL"/>
+    <mesh name="astribot_arm_left_link_2" content_type="model/stl" file="astribot_s0/astribot_arm/meshes/astribot_arm_left_link_2.STL"/>
+    <mesh name="astribot_arm_right_link_2" content_type="model/stl" file="astribot_s0/astribot_arm/meshes/astribot_arm_right_link_2.STL"/>
+    <mesh name="astribot_arm_link_3" content_type="model/stl" file="astribot_s0/astribot_arm/meshes/astribot_arm_link_3.STL"/>
+    <mesh name="astribot_arm_link_4" content_type="model/stl" file="astribot_s0/astribot_arm/meshes/astribot_arm_link_4.STL"/>
+    <mesh name="astribot_arm_link_5" content_type="model/stl" file="astribot_s0/astribot_arm/meshes/astribot_arm_link_5.STL"/>
+    <mesh name="astribot_arm_link_6" content_type="model/stl" file="astribot_s0/astribot_arm/meshes/astribot_arm_link_6.STL"/>
+    <mesh name="astribot_arm_link_7" content_type="model/stl" file="astribot_s0/astribot_arm/meshes/astribot_arm_link_7.STL"/>
+    <mesh name="gripper_base_link" content_type="model/stl" file="astribot_s0/astribot_gripper/meshes/astribot_gripper_base_link.STL"/>
+    <mesh name="gripper_L1_Link" content_type="model/stl" file="astribot_s0/astribot_gripper/meshes/astribot_gripper_L1_Link.STL"/>
+    <mesh name="gripper_L11_Link" content_type="model/stl" file="astribot_s0/astribot_gripper/meshes/astribot_gripper_L11_Link.STL"/>
+    <mesh name="gripper_L2_Link" content_type="model/stl" file="astribot_s0/astribot_gripper/meshes/astribot_gripper_L2_Link.STL"/>
+    <mesh name="gripper_R1_Link" content_type="model/stl" file="astribot_s0/astribot_gripper/meshes/astribot_gripper_R1_Link.STL"/>
+    <mesh name="gripper_R11_Link" content_type="model/stl" file="astribot_s0/astribot_gripper/meshes/astribot_gripper_R11_Link.STL"/>
+    <mesh name="gripper_R2_Link" content_type="model/stl" file="astribot_s0/astribot_gripper/meshes/astribot_gripper_R2_Link.STL"/>
+    <mesh name="astribot_torso_base_link" content_type="model/stl" file="astribot_s0/astribot_torso/meshes/astribot_torso_base_link.STL"/>
+    <mesh name="astribot_torso_link_1" content_type="model/stl" file="astribot_s0/astribot_torso/meshes/astribot_torso_Link1.STL"/>
+    <mesh name="astribot_torso_link_2" content_type="model/stl" file="astribot_s0/astribot_torso/meshes/astribot_torso_Link2.STL"/>
+    <mesh name="astribot_torso_link_3" content_type="model/stl" file="astribot_s0/astribot_torso/meshes/astribot_torso_Link3.STL"/>
+    <mesh name="astribot_torso_link_4" content_type="model/stl" file="astribot_s0/astribot_torso/meshes/astribot_torso_Link4.STL"/>
+    <mesh name="astribot_torso_link_1ID" content_type="model/stl" file="astribot_s0/astribot_torso/meshes/astribot_torso_link1ID.STL"/>
+    <mesh name="astribot_torso_link_2ID" content_type="model/stl" file="astribot_s0/astribot_torso/meshes/astribot_torso_link2ID.STL"/>
+    <mesh name="astribot_torso_link_4ID" content_type="model/stl" file="astribot_s0/astribot_torso/meshes/astribot_torso_link4ID.STL"/>
+    <mesh name="astribot_head_link" content_type="model/stl" file="astribot_s0/astribot_torso/meshes/astribot_head.stl" scale="0.1 0.1 0.1"/>
+    <mesh name="astribot_head_base_link" content_type="model/stl" file="astribot_s0/astribot_torso/meshes/astribot_head_base_link.STL"/>
+    <mesh name="astribot_head_link_1" content_type="model/stl" file="astribot_s0/astribot_torso/meshes/astribot_head_link_1.STL"/>
+    <mesh name="astribot_head_link_2" content_type="model/stl" file="astribot_s0/astribot_torso/meshes/astribot_head_link_2.STL"/>
+    <mesh name="astribot_chassis_base_link" content_type="model/stl" file="astribot_s0/astribot_chassis/meshes/astribot_chassis_base_link.STL"/>
+    <mesh name="astribot_chassis_base_linkID" content_type="model/stl" file="astribot_s0/astribot_chassis/meshes/astribot_chassis_base_linkID.STL"/>
+    <mesh name="astribot_chassis_link_1" content_type="model/stl" file="astribot_s0/astribot_chassis/meshes/astribot_chassis_L1.STL"/>
+    <mesh name="astribot_chassis_link_21" content_type="model/stl" file="astribot_s0/astribot_chassis/meshes/astribot_chassis_L2_1.STL"/>
+    <mesh name="astribot_chassis_link_22" content_type="model/stl" file="astribot_s0/astribot_chassis/meshes/astribot_chassis_L2_2.STL"/>
+    <mesh name="astribot_chassis_link_31" content_type="model/stl" file="astribot_s0/astribot_chassis/meshes/astribot_chassis_L3_1.STL"/>
+    <mesh name="astribot_chassis_link_32" content_type="model/stl" file="astribot_s0/astribot_chassis/meshes/astribot_chassis_L3_2.STL"/>
+    <mesh name="astribot_chassis_link_41" content_type="model/stl" file="astribot_s0/astribot_chassis/meshes/astribot_chassis_L4_1.STL"/>
+    <mesh name="astribot_chassis_link_42" content_type="model/stl" file="astribot_s0/astribot_chassis/meshes/astribot_chassis_L4_2.STL"/>
+  </asset>
+
+  <worldbody>
+    <geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
+    <camera pos="2.107 0.011 1.6" quat="0.564732 0.424945 0.42537 0.565297"/>
+    <light pos="0 0 2" dir="0 0 -1" directional="true"/>
+    <body name="com_target" pos="0.5 0 0.5" mocap="true">
+      <geom size="0.06" contype="0" conaffinity="0" rgba="0.6 0.3 0.3 0.2"/>
+      <site pos="0 0 0" size="0.01" group="1" rgba="0 0 1 1"/>
+    </body>
+    <body name="astribot_arm_left_tool_site_target" pos="0.5 0 0.5" quat="0 1 0 0" mocap="true">
+      <geom size="0.04 0.04 0.04" type="box" contype="0" conaffinity="0" rgba="0.6 0.3 0.3 0.2"/>
+      <site pos="0 0 0" size="0.01" group="1" rgba="0 0 1 1"/>
+    </body>
+    <body name="astribot_arm_right_tool_site_target" pos="0.5 0 0.5" quat="0 1 0 0" mocap="true">
+      <geom size="0.04 0.04 0.04" type="box" contype="0" conaffinity="0" rgba="0.6 0.3 0.3 0.2"/>
+      <site pos="0 0 0" size="0.01" group="1" rgba="0 0 1 1"/>
+    </body>
+    <body name="left_foot_target" pos="0.5 0 0.5" quat="0 1 0 0" mocap="true">
+      <geom size="0.04 0.04 0.04" type="box" contype="0" conaffinity="0" rgba="0.6 0.3 0.3 0.2"/>
+      <site pos="0 0 0" size="0.01" group="1" rgba="0 0 1 1"/>
+    </body>
+    <body name="right_foot_target" pos="0.5 0 0.5" quat="0 1 0 0" mocap="true">
+      <geom size="0.04 0.04 0.04" type="box" contype="0" conaffinity="0" rgba="0.6 0.3 0.3 0.2"/>
+      <site pos="0 0 0" size="0.01" group="1" rgba="0 0 1 1"/>
+    </body>
+    <body name="torso_base" pos="-0.2 0 0.001">
+      <camera name="head" pos="0 0 1" quat="0.67549 0.208975 -0.208954 -0.67556"/>
+      <camera name="trackcom_cam" pos="3 -3 1" quat="0.664501 0.663972 0.242562 0.242369" mode="trackcom"/>
+      <body name="astribot_chassis_base" pos="0 0 0.058">
+        <inertial pos="-0.106236 -0.000755 0.066896" quat="-0.00760397 0.643869 0.0104866 -0.765026" mass="45.3547" diaginertia="3.24381 2.22511 1.5049"/>
+        <geom type="mesh" contype="0" conaffinity="0" rgba="0.79216 0.81961 0.93333 1" mesh="astribot_chassis_base_linkID"/>
+        <site name="astribot_chassis_imu_site" pos="0 0 0"/>
+        <body name="astribot_chassis_front_left" pos="0.2 0.27 0.042">
+          <site name="astribot_chassis_front_left_site" pos="0 0 0"/>
+          <body name="astribot_chassis_front_left_wheel">
+            <joint name="astribot_chassis_wheel_joint_left" pos="0 0 0" axis="0 1 0" limited="false"/>
+            <geom name="astribot_chassis_wheel_geom_left" size="0.1 0.02" quat="0.707105 0.707108 0 0" type="cylinder" friction="10 1 1" solref="0.01 0.002" solimp="0.99 0.99 0.01" mass="1" rgba="1 0 1 0.5"/>
+          </body>
+        </body>
+        <body pos="0.2 0 0.042">
+          <site name="chassis" pos="0 0 0"/>
+          <site pos="-0.07 0.155 0.116"/>
+          <site pos="-0.07 -0.155 0.116"/>
+        </body>
+        <body name="astribot_chassis_front_right" pos="0.2 -0.27 0.042">
+          <site name="astribot_chassis_front_right_site" pos="0 0 0"/>
+          <body name="astribot_chassis_front_right_wheel">
+            <joint name="astribot_chassis_wheel_joint_right" pos="0 0 0" axis="0 1 0" limited="false"/>
+            <geom name="astribot_chassis_wheel_geom_right" size="0.1 0.02" quat="0.707105 0.707108 0 0" type="cylinder" friction="10 1 1" solref="0.01 0.002" solimp="0.99 0.99 0.01" mass="1" rgba="1 0 1 0.5"/>
+          </body>
+        </body>
+        <body name="astribot_chassis_back" pos="-0.289 0 0.042">
+          <site name="astribot_chassis_back_site" pos="0 0 0"/>
+          <body name="astribot_chassis_back_ball">
+            <joint name="astribot_chassis_back_joint" pos="0 0 0" type="ball" limited="false" actuatorfrclimited="false"/>
+            <geom name="astribot_chassis_ball_geom" size="0.1" friction="10 1 1" solref="0.01 0.002" solimp="0.99 0.99 0.01" mass="1" rgba="1 0 1 0.5"/>
+          </body>
+        </body>
+      </body>
+      <body name="astribot_torso_base" pos="0 0 0.058">
+        <geom class="Widget" size="0.36 0.3 0.12" pos="0 0 0.12" type="box" mass="0.001" rgba="0 1 0 0.1"/>
+        <geom name="astribot_torso_base" pos="-0.0187 0 0" quat="0.500398 -0.5 -0.5 0.499602" type="mesh" contype="0" conaffinity="0" mass="0.001" rgba="1 1 1 1" mesh="astribot_torso_base_link"/>
+        <site name="astribot_torso_base" pos="0 0 0" size="0.01" rgba="1 0 0 1"/>
+        <body name="astribot_torso_link_1" pos="1e-07 0 0.09" quat="0.500398 -0.5 0.499602 0.5">
+          <inertial pos="-0.176256 -0.018787 -1.1108e-07" quat="0.503559 0.503578 0.496416 0.496397" mass="4.49582" diaginertia="0.100778 0.082087 0.0292793"/>
+          <joint name="astribot_torso_joint_1" class="torso_size1" pos="0 0 0" axis="0 0 1" range="-3.14 3.14"/>
+          <geom class="Widget" size="0.12 0.15" pos="-0.22 0 0" quat="0.70707 0 0.707143 0" type="capsule" rgba="0 1 0 0.1"/>
+          <geom name="astribot_torso_geom_1" type="mesh" contype="0" conaffinity="0" mass="0" rgba="1 1 1 1" mesh="astribot_torso_link_1ID"/>
+          <body name="astribot_torso_link_2" pos="-0.39 0 0">
+            <inertial pos="-0.206862 0.037802 0.000706" quat="-0.170544 0.705795 -0.0938477 0.681146" mass="8.7614" diaginertia="0.194427 0.192567 0.026426"/>
+            <joint name="astribot_torso_joint_2" class="torso_size1" pos="0 0 0" axis="0 0 1" range="-3.14 3.14"/>
+            <geom name="astribot_torso_geom_2" type="mesh" contype="0" conaffinity="0" mass="0" rgba="1 1 1 1" mesh="astribot_torso_link_2ID"/>
+            <geom class="Widget" size="0.12 0.15" pos="-0.24 0.03 0" quat="0.70707 0 0.707143 0" type="capsule" rgba="0 1 0 0.1"/>
+            <body name="astribot_torso_link_3" pos="-0.41 0 0">
+              <inertial pos="-0.018455 -0.000233 -0.00024" quat="0.487782 0.519743 0.51126 0.480155" mass="0.530681" diaginertia="0.000702065 0.000517253 0.000453683"/>
+              <joint name="astribot_torso_joint_3" class="torso_size1" pos="0 0 0" axis="0 0 1" range="-3.14 3.14"/>
+              <geom name="astribot_torso_geom_3" type="mesh" contype="0" conaffinity="0" mass="0" rgba="1 1 1 1" mesh="astribot_torso_link_3"/>
+              <geom class="Widget" size="0.1 0.18" pos="-0.24 0 0" quat="0.70707 0 0.707143 0" type="capsule" rgba="0 1 0 0.1"/>
+              <body name="astribot_torso_link_4" quat="0.500398 0.5 -0.5 -0.499602">
+                <joint name="astribot_torso_joint_4" class="torso_size1" pos="0 0 0" axis="0 0 1" range="-3.14 3.14"/>
+                <geom name="astribot_torso_geom_4" type="mesh" contype="0" conaffinity="0" mass="4.56098" rgba="1 1 1 1" mesh="astribot_torso_link_4ID"/>
+                <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="astribot_head_base_link"/>
+                <site name="torso" pos="0 0 0.5" size="0.01" rgba="1 0 0 1"/>
+                <body name="camera_1" pos="0.15 0 0.395">
+                  <camera name="torso_cam_1" pos="0 0 0" quat="-0.5 -0.5 0.5 0.5" fovy="60"/>
+                </body>
+                <body name="astribot_head_link_1" pos="0 0 0.5">
+                  <inertial pos="-5.3693e-06 -0.0010707 0.062586" quat="0.0253074 0.708948 0.0295537 0.704186" mass="0.105" diaginertia="2.17672e-05 1.97751e-05 1.67917e-05"/>
+                  <joint name="astribot_head_joint_1" pos="0 0 0" axis="0 0 1" range="-3.14 3.14"/>
+                  <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="astribot_head_link_1"/>
+                  <body name="astribot_head_link_2" pos="0 0 0.0798">
+                    <inertial pos="0.0077215 -0.00061344 0.13781" quat="0.982472 -0.000916769 -0.186407 -0.000200305" mass="1.1232" diaginertia="0.00296712 0.0023298 0.00200248"/>
+                    <joint name="astribot_head_joint_2" pos="0 0 0" axis="0 1 0" range="-3.14 3.14"/>
+                    <geom class="Widget" size="0.13 0.01" pos="-0.02 0 0.13" type="capsule" rgba="0 1 0 0.1"/>
+                    <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="astribot_head_link_2"/>
+                    <camera name="head_cam_1" pos="0.09 0 0.08" quat="-0.5 0.5 -0.5 0.5" fovy="60"/>
+                  </body>
+                </body>
+                <body name="astribot_arm_left" pos="0 0.06055 0.5" quat="0.5 -0.5 -0.5 -0.5">
+                  <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_base_link"/>
+                  <geom class="Widget" size="0.04 0.04" pos="0 0 0.12" type="capsule" rgba="0 1 0 0.1"/>
+                  <body name="astribot_arm_left_link_1" pos="0 0 0.1115">
+                    <inertial pos="-0.000522 0.000129 -0.06597" quat="-0.236057 0.669135 0.218491 0.669924" mass="0.856" diaginertia="0.00140215 0.00114123 0.00112404"/>
+                    <joint name="astribot_arm_left_joint_1" pos="0 0 0" axis="0 0 1" range="-3.4034 3.4034"/>
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_1"/>
+                    <body name="astribot_arm_left_link_2" quat="0.707105 -0.707108 0 0">
+                      <inertial pos="-0.00598 -0.037401 0.051404" quat="0.980123 -0.184346 0.0029338 0.0732636" mass="1.811" diaginertia="0.00714743 0.00607874 0.00295532"/>
+                      <joint name="astribot_arm_left_joint_2" pos="0 0 0" axis="0 0 -1" range="-3.4034 3.4034"/>
+                      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="astribot_arm_left_link_2"/>
+                      <body name="astribot_arm_left_link_3" pos="0 -0.05 0" quat="0.499998 -0.5 -0.500002 0.5">
+                        <inertial pos="0.006997 0.000328 0.193095" quat="0.726728 -0.0328934 -0.0412702 0.684895" mass="3.09" diaginertia="0.0348753 0.0338781 0.00437098"/>
+                        <joint name="astribot_arm_left_joint_3" pos="0 0 0" axis="0 0 1" range="-3.4034 3.4034"/>
+                        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_3"/>
+                        <geom class="Widget" size="0.06 0.135" pos="0 0 0.175" type="capsule" rgba="0 1 0 0.1"/>
+                        <body name="astribot_arm_left_link_4" pos="0.035 0 0.34385" quat="0.707105 -0.707108 0 0">
+                          <inertial pos="5e-06 -0.042641 0.0001" quat="0.423396 0.423344 -0.566952 0.565757" mass="0.242" diaginertia="0.000182501 0.000177922 0.000103988"/>
+                          <joint name="astribot_arm_left_joint_4" pos="0 0 0" axis="0 0 1" range="-3.4034 3.4034"/>
+                          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_4"/>
+                          <body name="astribot_arm_left_link_5" quat="0.707105 0.707108 0 0">
+                            <inertial pos="0.00163 -5.8e-05 0.178345" quat="0.999958 -0.00638128 -0.00467705 -0.00454234" mass="1.57" diaginertia="0.00793784 0.00779883 0.00125094"/>
+                            <joint name="astribot_arm_left_joint_5" pos="0 0 0" axis="0 0 1" range="-3.4034 3.4034"/>
+                            <geom class="Widget" size="0.05 0.135" pos="0 0 0.175" type="capsule" rgba="0 1 0 0.1"/>
+                            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_5"/>
+                            <body name="astribot_arm_left_link_6" pos="0 0 0.3" quat="0.707105 -0.707108 0 0">
+                              <inertial pos="-0.003062 -4e-06 4.8e-05" quat="0.710409 -0.00587598 -0.00552857 0.703743" mass="0.202" diaginertia="0.000146279 0.000116061 0.000109975"/>
+                              <joint name="astribot_arm_left_joint_6" pos="0 0 0" axis="0 0 1" range="-3.4034 3.4034"/>
+                              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_6"/>
+                              <body name="astribot_arm_left_link_7" quat="0.707105 0 0.707108 0">
+                                <inertial pos="8e-06 -0.013245 -0.026305" quat="0.390171 0.589717 -0.589717 0.390171" mass="0.095576" diaginertia="7.29487e-05 6.5e-05 3.40513e-05"/>
+                                <joint name="astribot_arm_left_joint_7" pos="0 0 0" axis="0 0 1" range="-3.4034 3.4034"/>
+                                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_7"/>
+                                <site name="force_torque_sensor_left" pos="0 0 0"/>
+                                <body name="astribot_arm_left_tool_link" pos="0 -0.05 0" quat="0.707107 0.707107 0 0">
+                                  <site name="astribot_arm_left_tool_site" pos="0 0 0" size="0.01" rgba="1 0 0 1"/>
+                                  <camera name="astribot_arm_left_effector" pos="0 0.1 0.1" fovy="100"/>
+                                  <body name="astribot_gripper_left_base">
+                                    <inertial pos="0 0 0.04" quat="0 0 0 1" mass="0.4" diaginertia="0.001 0.001 0.001"/>
+                                    <geom class="Widget" size="0.035 0.075" pos="0 0 0.025" type="capsule" rgba="0 1 0 0.1"/>
+                                    <geom type="mesh" rgba="0.2 0.2 0.2 1" mesh="gripper_base_link"/>
+                                    <geom name="astribot_gripper_right_left_geom" size="0.03 0.0135 0.01" pos="0 0 0.08" type="box" priority="1" friction="0.7" solref="0.004" solimp="0.95 0.99" rgba="0.5 0.2 0.2 1"/>
+                                    <body name="astribot_gripper_left_Link_L1" pos="0.013001 0 0.0537">
+                                      <inertial pos="0 0 0.02" quat="0 0 0 1" mass="0.03" diaginertia="0.001 0.001 0.001"/>
+                                      <joint name="astribot_gripper_left_joint_L1" class="gripper_size1" pos="0 0 0" axis="0 -1 0" range="0 1.14"/>
+                                      <geom name="astribot_gripper_left_geom_L1" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_L1_Link"/>
+                                      <body name="astribot_gripper_left_Link_L11" pos="0.036 0 0.031749" quat="0.999888 0 -0.0149994 0">
+                                        <inertial pos="0 0 0.02" quat="0 0 0 1" mass="0.067" diaginertia="0.001 0.001 0.001"/>
+                                        <joint name="astribot_gripper_left_joint_L11" class="gripper_size1" pos="0 0 0" axis="0 1 0" range="-3.14 3.14"/>
+                                        <geom name="astribot_gripper_left_geom_L11" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_L11_Link"/>
+                                        <geom name="astribot_gripper_left_geom_L112" size="0.004 0.0135 0.03" pos="-0.003 0 0.036" type="box" priority="1" friction="0.7" solref="0.004" solimp="0.95 0.99" rgba="0.5 0.2 0.2 1"/>
+                                      </body>
+                                    </body>
+                                    <body name="astribot_gripper_left_Link_L2" pos="0.033 0 0.0537">
+                                      <inertial pos="0 0 0.02" quat="0 0 0 1" mass="0.03" diaginertia="0.001 0.001 0.001"/>
+                                      <joint name="astribot_gripper_left_joint_L2" class="gripper_size1" pos="0 0 0" axis="0 1 0" range="-3.14 3.14"/>
+                                      <geom name="astribot_gripper_left_geom_L2" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_L2_Link"/>
+                                    </body>
+                                    <body name="astribot_gripper_left_Link_R1" pos="-0.013001 0 0.0537">
+                                      <inertial pos="0 0 0.02" quat="0 0 0 1" mass="0.03" diaginertia="0.001 0.001 0.001"/>
+                                      <joint name="astribot_gripper_left_joint_R1" class="gripper_size1" pos="0 0 0" axis="0 1 0" range="0 1.14"/>
+                                      <geom name="astribot_gripper_left_geom_R1" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_R1_Link"/>
+                                      <body name="astribot_gripper_left_Link_R11" pos="-0.036 0 0.031749" quat="0.999888 0 0.0149994 0">
+                                        <inertial pos="0 0 0.02" quat="0 0 0 1" mass="0.067" diaginertia="0.001 0.001 0.001"/>
+                                        <joint name="astribot_gripper_left_joint_R11" class="gripper_size1" pos="0 0 0" axis="0 1 0" range="-3.14 3.14"/>
+                                        <geom name="astribot_gripper_left_geom_R11" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_R11_Link"/>
+                                        <geom name="astribot_gripper_left_geom_R112" size="0.004 0.0135 0.03" pos="0.003 0 0.036" type="box" priority="1" friction="0.7" solref="0.004" solimp="0.95 0.99" rgba="0.5 0.2 0.2 1"/>
+                                      </body>
+                                    </body>
+                                    <body name="astribot_gripper_left_Link_R2" pos="-0.033 0 0.0537">
+                                      <inertial pos="0 0 0.02" quat="0 0 0 1" mass="0.03" diaginertia="0.001 0.001 0.001"/>
+                                      <joint name="astribot_gripper_left_joint_R2" class="gripper_size1" pos="0 0 0" axis="0 1 0" range="-3.14 3.14"/>
+                                      <geom name="astribot_gripper_left_geom_R2" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_R2_Link"/>
+                                    </body>
+                                  </body>
+                                </body>
+                              </body>
+                            </body>
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+                <body name="astribot_arm_right" pos="0 -0.06055 0.5" quat="0.5 0.5 -0.5 0.5">
+                  <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_base_link"/>
+                  <geom class="Widget" size="0.04 0.04" pos="0 0 0.12" type="capsule" rgba="0 1 0 0.1"/>
+                  <body name="astribot_arm_right_link_1" pos="0 0 0.1115">
+                    <inertial pos="-0.000522 0.000129 -0.06597" quat="-0.236057 0.669135 0.218491 0.669924" mass="0.856" diaginertia="0.00140215 0.00114123 0.00112404"/>
+                    <joint name="astribot_arm_right_joint_1" pos="0 0 0" axis="0 0 1" range="-3.4034 3.4034"/>
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_1"/>
+                    <body name="astribot_arm_right_link_2" quat="0.707105 -0.707108 0 0">
+                      <inertial pos="-0.00598 -0.037401 -0.051404" quat="0.980123 -0.184346 0.0029338 0.0732636" mass="1.811" diaginertia="0.00714743 0.00607874 0.00295532"/>
+                      <joint name="astribot_arm_right_joint_2" pos="0 0 0" axis="0 0 -1" range="-3.4034 3.4034"/>
+                      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="astribot_arm_right_link_2"/>
+                      <body name="astribot_arm_right_link_3" pos="0 -0.05 0" quat="0.499998 -0.5 -0.500002 0.5">
+                        <inertial pos="0.006997 0.000328 0.193095" quat="0.726728 -0.0328934 -0.0412702 0.684895" mass="3.09" diaginertia="0.0348753 0.0338781 0.00437098"/>
+                        <joint name="astribot_arm_right_joint_3" pos="0 0 0" axis="0 0 1" range="-3.4034 3.4034"/>
+                        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_3"/>
+                        <geom class="Widget" size="0.06 0.135" pos="0 0 0.175" type="capsule" rgba="0 1 0 0.1"/>
+                        <body name="astribot_arm_right_link_4" pos="0.035 0 0.34385" quat="0.707105 -0.707108 0 0">
+                          <inertial pos="5e-06 -0.042641 0.0001" quat="0.423396 0.423344 -0.566952 0.565757" mass="0.242" diaginertia="0.000182501 0.000177922 0.000103988"/>
+                          <joint name="astribot_arm_right_joint_4" pos="0 0 0" axis="0 0 1" range="-3.4034 3.4034"/>
+                          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_4"/>
+                          <body name="astribot_arm_right_link_5" quat="0.707105 0.707108 0 0">
+                            <inertial pos="0.00163 -5.8e-05 0.178345" quat="0.999958 -0.00638128 -0.00467705 -0.00454234" mass="1.57" diaginertia="0.00793784 0.00779883 0.00125094"/>
+                            <joint name="astribot_arm_right_joint_5" pos="0 0 0" axis="0 0 1" range="-3.4034 3.4034"/>
+                            <geom class="Widget" size="0.05 0.135" pos="0 0 0.175" type="capsule" rgba="0 1 0 0.1"/>
+                            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_5"/>
+                            <body name="astribot_arm_right_link_6" pos="0 0 0.3" quat="0.707105 -0.707108 0 0">
+                              <inertial pos="-0.003062 -4e-06 4.8e-05" quat="0.710409 -0.00587598 -0.00552857 0.703743" mass="0.202" diaginertia="0.000146279 0.000116061 0.000109975"/>
+                              <joint name="astribot_arm_right_joint_6" pos="0 0 0" axis="0 0 1" range="-3.4034 3.4034"/>
+                              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_6"/>
+                              <body name="astribot_arm_right_link_7" quat="0.707105 0 0.707108 0">
+                                <inertial pos="8e-06 -0.013245 -0.026305" quat="0.390171 0.589717 -0.589717 0.390171" mass="0.095576" diaginertia="7.29487e-05 6.5e-05 3.40513e-05"/>
+                                <joint name="astribot_arm_right_joint_7" pos="0 0 0" axis="0 0 1" range="-3.4034 3.4034"/>
+                                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="astribot_arm_link_7"/>
+                                <site name="force_torque_sensor_right" pos="0 0 0"/>
+                                <body name="astribot_arm_right_tool_link" pos="0 -0.05 0" quat="0.707107 0.707107 0 0">
+                                  <site name="astribot_arm_right_tool_site" pos="0 0 0" size="0.01" rgba="1 0 0 1"/>
+                                  <camera name="astribot_arm_right_effector" pos="0 0.1 0.1" fovy="100"/>
+                                  <body name="astribot_gripper_right_base">
+                                    <inertial pos="0 0 0.04" quat="0 0 0 1" mass="0.4" diaginertia="0.001 0.001 0.001"/>
+                                    <geom class="Widget" size="0.035 0.075" pos="0 0 0.025" type="capsule" rgba="0 1 0 0.1"/>
+                                    <geom type="mesh" rgba="0.2 0.2 0.2 1" mesh="gripper_base_link"/>
+                                    <geom name="astribot_gripper_right_base_geom" size="0.03 0.0135 0.01" pos="0 0 0.08" type="box" priority="3" friction="1.5" rgba="0.5 0.2 0.2 1"/>
+                                    <body name="astribot_gripper_right_Link_L1" pos="0.013001 0 0.0537">
+                                      <inertial pos="0 0 0.02" quat="0 0 0 1" mass="0.03" diaginertia="0.001 0.001 0.001"/>
+                                      <joint name="astribot_gripper_right_joint_L1" class="gripper_size1" pos="0 0 0" axis="0 -1 0" range="0 1.14"/>
+                                      <geom name="astribot_gripper_right_geom_L1" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_L1_Link"/>
+                                      <body name="astribot_gripper_right_Link_L11" pos="0.036 0 0.031749" quat="0.999888 0 -0.0149994 0">
+                                        <inertial pos="0 0 0.02" quat="0 0 0 1" mass="0.067" diaginertia="0.001 0.001 0.001"/>
+                                        <joint name="astribot_gripper_right_joint_L11" class="gripper_size1" pos="0 0 0" axis="0 1 0" range="-3.14 3.14"/>
+                                        <geom name="astribot_gripper_right_geom_L11" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_L11_Link"/>
+                                        <geom name="astribot_gripper_right_geom_L112" size="0.004 0.0135 0.03" pos="-0.003 0 0.036" type="box" priority="1" friction="1.8 1.2 1.2" rgba="0.5 0.2 0.2 1"/>
+                                      </body>
+                                    </body>
+                                    <body name="astribot_gripper_right_Link_L2" pos="0.033 0 0.0537">
+                                      <inertial pos="0 0 0.02" quat="0 0 0 1" mass="0.03" diaginertia="0.001 0.001 0.001"/>
+                                      <joint name="astribot_gripper_right_joint_L2" class="gripper_size1" pos="0 0 0" axis="0 1 0" range="-3.14 3.14"/>
+                                      <geom name="astribot_gripper_right_geom_L2" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_L2_Link"/>
+                                    </body>
+                                    <body name="astribot_gripper_right_Link_R1" pos="-0.013001 0 0.0537">
+                                      <inertial pos="0 0 0.02" quat="0 0 0 1" mass="0.03" diaginertia="0.001 0.001 0.001"/>
+                                      <joint name="astribot_gripper_right_joint_R1" class="gripper_size1" pos="0 0 0" axis="0 1 0" range="0 1.14"/>
+                                      <geom name="astribot_gripper_right_geom_R1" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_R1_Link"/>
+                                      <body name="astribot_gripper_right_Link_R11" pos="-0.036 0 0.031749" quat="0.999888 0 0.0149994 0">
+                                        <inertial pos="0 0 0.02" quat="0 0 0 1" mass="0.067" diaginertia="0.001 0.001 0.001"/>
+                                        <joint name="astribot_gripper_right_joint_R11" class="gripper_size1" pos="0 0 0" axis="0 1 0" range="-3.14 3.14"/>
+                                        <geom name="astribot_gripper_right_geom_R11" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_R11_Link"/>
+                                        <geom name="astribot_gripper_right_geom_R112" size="0.004 0.0135 0.03" pos="0.003 0 0.036" type="box" priority="3" friction="1.5" rgba="0.5 0.2 0.2 1"/>
+                                      </body>
+                                    </body>
+                                    <body name="astribot_gripper_right_Link_R2" pos="-0.033 0 0.0537">
+                                      <inertial pos="0 0 0.02" quat="0 0 0 1" mass="0.03" diaginertia="0.001 0.001 0.001"/>
+                                      <joint name="astribot_gripper_right_joint_R2" class="gripper_size1" pos="0 0 0" axis="0 1 0" range="-3.14 3.14"/>
+                                      <geom name="astribot_gripper_right_geom_R2" type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="gripper_R2_Link"/>
+                                    </body>
+                                  </body>
+                                </body>
+                              </body>
+                            </body>
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="endpoint_desired_astribot_arm_left">
+      <joint type="free" limited="false" actuatorfrclimited="false"/>
+      <body pos="0 0.1 0" quat="0.707107 0.707107 0 0">
+        <geom type="mesh" contype="0" conaffinity="0" group="1" mass="1e-05" rgba="0 0 0.6 0.5" mesh="gripper_base_link"/>
+      </body>
+    </body>
+    <body name="remote_control_astribot_arm_left">
+      <joint type="free" limited="false" actuatorfrclimited="false"/>
+      <body pos="0 0.1 0" quat="0.707107 0.707107 0 0">
+        <geom type="mesh" contype="0" conaffinity="0" group="1" mass="1e-05" rgba="0 0.6 0 0.5" mesh="gripper_base_link"/>
+      </body>
+    </body>
+    <body name="endpoint_desired_astribot_arm_right">
+      <joint type="free" limited="false" actuatorfrclimited="false"/>
+      <body pos="0 0.1 0" quat="0.707107 0.707107 0 0">
+        <geom type="mesh" contype="0" conaffinity="0" group="1" mass="1e-05" rgba="0 0 0.6 0.5" mesh="gripper_base_link"/>
+      </body>
+    </body>
+    <body name="remote_control_astribot_arm_right">
+      <joint type="free" limited="false" actuatorfrclimited="false"/>
+      <body pos="0 0.1 0" quat="0.707107 0.707107 0 0">
+        <geom type="mesh" contype="0" conaffinity="0" group="1" mass="1e-05" rgba="0 0.6 0 0.5" mesh="gripper_base_link"/>
+      </body>
+    </body>
+    <body name="endpoint_desired_astribot_torso">
+      <joint type="free" limited="false" actuatorfrclimited="false"/>
+      <body>
+        <geom size="0.02 0.02 0.02" type="box" contype="0" conaffinity="0" group="1" mass="1e-05" rgba="0 0 0.6 0.5"/>
+      </body>
+    </body>
+    <body name="remote_control_astribot_torso">
+      <joint type="free" limited="false" actuatorfrclimited="false"/>
+      <body>
+        <geom size="0.02 0.02 0.02" type="box" contype="0" conaffinity="0" group="1" mass="1e-05" rgba="0 0.6 0 0.5"/>
+      </body>
+    </body>
+    <body name="endpoint_desired_astribot_head">
+      <joint type="free" limited="false" actuatorfrclimited="false"/>
+      <body>
+        <geom size="0.02 0.02 0.02" type="box" contype="0" conaffinity="0" group="1" mass="1e-05" rgba="0 0 0.6 0.5"/>
+      </body>
+    </body>
+    <body name="remote_control_astribot_head">
+      <joint type="free" limited="false" actuatorfrclimited="false"/>
+      <body>
+        <geom size="0.02 0.02 0.02" type="box" contype="0" conaffinity="0" group="1" mass="1e-05" rgba="0 0.6 0 0.5"/>
+      </body>
+    </body>
+    <body name="endpoint_desired_astribot_chassis">
+      <joint type="free" limited="false" actuatorfrclimited="false"/>
+      <body pos="0 0 0.1">
+        <geom size="0.02" contype="0" conaffinity="0" group="1" mass="1e-05" rgba="0 0 0.6 0.5"/>
+      </body>
+    </body>
+    <body name="remote_control_astribot_chassis">
+      <joint type="free" limited="false" actuatorfrclimited="false"/>
+      <body pos="0 0 0.1">
+        <geom size="0.02" contype="0" conaffinity="0" group="1" mass="1e-05" rgba="0 0.6 0 0.5"/>
+      </body>
+    </body>
+    <body name="obstacle_sphere" pos="0.3 0 -0.2">
+      <joint type="free" limited="false" actuatorfrclimited="false"/>
+      <geom size="0.1" contype="0" conaffinity="0" group="1" mass="1e-06" rgba="1 1 1 0.5"/>
+    </body>
+    <body name="obstacle_cylinder" pos="0.3 0.5 -0.2">
+      <joint type="free" limited="false" actuatorfrclimited="false"/>
+      <geom size="0.1 0.1" quat="0.70707 0.707143 0 0" type="capsule" contype="0" conaffinity="0" group="1" mass="1e-06" rgba="1 1 1 0.5"/>
+    </body>
+    <body name="mujoco_object" pos="0.5 0 0.01">
+      <joint type="free" limited="false" actuatorfrclimited="false"/>
+      <geom size="0.02 0.1 0.02" type="box" priority="1" friction="0.5" mass="0.05" rgba="0 0.8 0 1"/>
+    </body>
+    <body name="collison_point_1" pos="1 -0.5 0" mocap="true">
+      <site name="collison_point_1" pos="0 0 0" size="0.02" rgba="1 0.5 0 1"/>
+    </body>
+    <body name="collison_point_2" pos="1 0.5 0" mocap="true">
+      <site name="collison_point_2" pos="0 0 0" size="0.02" rgba="1 0 0 1"/>
+    </body>
+  </worldbody>
+
+  <contact>
+    <exclude body1="astribot_gripper_left_base" body2="astribot_gripper_left_Link_L1"/>
+    <exclude body1="astribot_gripper_left_base" body2="astribot_gripper_left_Link_L2"/>
+    <exclude body1="astribot_gripper_left_base" body2="astribot_gripper_left_Link_R1"/>
+    <exclude body1="astribot_gripper_left_base" body2="astribot_gripper_left_Link_R2"/>
+    <exclude body1="astribot_gripper_left_Link_L1" body2="astribot_gripper_left_Link_L11"/>
+    <exclude body1="astribot_gripper_left_Link_L1" body2="astribot_gripper_left_Link_L2"/>
+    <exclude body1="astribot_gripper_left_Link_L11" body2="astribot_gripper_left_Link_L2"/>
+    <exclude body1="astribot_gripper_left_Link_R1" body2="astribot_gripper_left_Link_R11"/>
+    <exclude body1="astribot_gripper_left_Link_R1" body2="astribot_gripper_left_Link_R2"/>
+    <exclude body1="astribot_gripper_left_Link_R11" body2="astribot_gripper_left_Link_R2"/>
+    <exclude body1="astribot_gripper_right_base" body2="astribot_gripper_right_Link_L1"/>
+    <exclude body1="astribot_gripper_right_base" body2="astribot_gripper_right_Link_L2"/>
+    <exclude body1="astribot_gripper_right_base" body2="astribot_gripper_right_Link_R1"/>
+    <exclude body1="astribot_gripper_right_base" body2="astribot_gripper_right_Link_R2"/>
+    <exclude body1="astribot_gripper_right_Link_L1" body2="astribot_gripper_right_Link_L11"/>
+    <exclude body1="astribot_gripper_right_Link_L1" body2="astribot_gripper_right_Link_L2"/>
+    <exclude body1="astribot_gripper_right_Link_L11" body2="astribot_gripper_right_Link_L2"/>
+    <exclude body1="astribot_gripper_right_Link_R1" body2="astribot_gripper_right_Link_R11"/>
+    <exclude body1="astribot_gripper_right_Link_R1" body2="astribot_gripper_right_Link_R2"/>
+    <exclude body1="astribot_gripper_right_Link_R11" body2="astribot_gripper_right_Link_R2"/>
+  </contact>
+
+  <equality>
+    <joint joint1="astribot_gripper_left_joint_R1" joint2="astribot_gripper_left_joint_L1" polycoef="0 1 0 0 0" solref="0.005" solimp="0.95 0.99"/>
+    <joint joint1="astribot_gripper_left_joint_R1" joint2="astribot_gripper_left_joint_R2" polycoef="0 1 0 0 0" solref="0.005" solimp="0.95 0.99"/>
+    <joint joint1="astribot_gripper_left_joint_R1" joint2="astribot_gripper_left_joint_R11" polycoef="0 -1 0 0 0"/>
+    <joint joint1="astribot_gripper_left_joint_L1" joint2="astribot_gripper_left_joint_L2" polycoef="0 -1 0 0 0" solref="0.005" solimp="0.95 0.99"/>
+    <joint joint1="astribot_gripper_left_joint_L1" joint2="astribot_gripper_left_joint_L11" polycoef="0 1 0 0 0"/>
+    <joint joint1="astribot_gripper_right_joint_R1" joint2="astribot_gripper_right_joint_L1" polycoef="0 1 0 0 0"/>
+    <joint joint1="astribot_gripper_right_joint_R1" joint2="astribot_gripper_right_joint_R2" polycoef="0 1 0 0 0"/>
+    <connect body1="astribot_gripper_right_Link_R2" body2="astribot_gripper_right_Link_R11" anchor="-0.036 0 0.031749" solref="0.005" solimp="0.95 0.99"/>
+    <joint joint1="astribot_gripper_right_joint_L1" joint2="astribot_gripper_right_joint_L2" polycoef="0 -1 0 0 0"/>
+    <connect body1="astribot_gripper_right_Link_L2" body2="astribot_gripper_right_Link_L11" anchor="0.036 0 0.031749" solref="0.005" solimp="0.95 0.99"/>
+  </equality>
+
+  <tendon>
+    <fixed name="gripper_left_split">
+      <joint joint="astribot_gripper_left_joint_R1" coef="1"/>
+      <joint joint="astribot_gripper_left_joint_L1" coef="1"/>
+    </fixed>
+    <fixed name="gripper_right_split">
+      <joint joint="astribot_gripper_right_joint_R1" coef="1"/>
+      <joint joint="astribot_gripper_right_joint_L1" coef="1"/>
+    </fixed>
+  </tendon>
+
+  <actuator>
+    <general name="astribot_chassis_wheel_joint_left" class="chassis_size1" joint="astribot_chassis_wheel_joint_left" gainprm="30" biasprm="0 -30 -10"/>
+    <general name="astribot_chassis_wheel_joint_right" class="chassis_size1" joint="astribot_chassis_wheel_joint_right" gainprm="30" biasprm="0 -30 -10"/>
+    <general name="astribot_torso_joint_1" class="torso_size1" joint="astribot_torso_joint_1" gainprm="10000" biasprm="0 -10000 -1000"/>
+    <general name="astribot_torso_joint_2" class="torso_size1" joint="astribot_torso_joint_2" gainprm="10000" biasprm="0 -10000 -1000"/>
+    <general name="astribot_torso_joint_3" class="torso_size1" joint="astribot_torso_joint_3" gainprm="10000" biasprm="0 -10000 -1000"/>
+    <general name="astribot_torso_joint_4" class="torso_size1" joint="astribot_torso_joint_4" gainprm="10000" biasprm="0 -10000 -1000"/>
+    <general name="astribot_head_joint_1" class="torso_size1" joint="astribot_head_joint_1" gainprm="1000" biasprm="0 -1000 -100"/>
+    <general name="astribot_head_joint_2" class="torso_size1" joint="astribot_head_joint_2" gainprm="1000" biasprm="0 -1000 -100"/>
+    <general name="astribot_arm_left_joint_1" class="size3" joint="astribot_arm_left_joint_1" gainprm="1000" biasprm="0 -1000 -100"/>
+    <general name="astribot_arm_left_joint_2" class="size3" joint="astribot_arm_left_joint_2" gainprm="1000" biasprm="0 -1000 -100"/>
+    <general name="astribot_arm_left_joint_3" class="size3" joint="astribot_arm_left_joint_3" gainprm="1000" biasprm="0 -1000 -100"/>
+    <general name="astribot_arm_left_joint_4" class="size2" joint="astribot_arm_left_joint_4" gainprm="500" biasprm="0 -500 -50"/>
+    <general name="astribot_arm_left_joint_5" class="size2" joint="astribot_arm_left_joint_5" gainprm="500" biasprm="0 -500 -50"/>
+    <general name="astribot_arm_left_joint_6" class="size1" joint="astribot_arm_left_joint_6" gainprm="200" biasprm="0 -200 -20"/>
+    <general name="astribot_arm_left_joint_7" class="size1" joint="astribot_arm_left_joint_7" gainprm="200" biasprm="0 -200 -20"/>
+    <general name="astribot_gripper_left_joint_L1" tendon="gripper_left_split" ctrlrange="0 80" forcerange="-10 10" gainprm="2.36" biasprm="0 -100 -2"/>
+    <general name="astribot_arm_right_joint_1" class="size3" joint="astribot_arm_right_joint_1" gainprm="1000" biasprm="0 -1000 -100"/>
+    <general name="astribot_arm_right_joint_2" class="size3" joint="astribot_arm_right_joint_2" gainprm="1000" biasprm="0 -1000 -100"/>
+    <general name="astribot_arm_right_joint_3" class="size3" joint="astribot_arm_right_joint_3" gainprm="1000" biasprm="0 -1000 -100"/>
+    <general name="astribot_arm_right_joint_4" class="size2" joint="astribot_arm_right_joint_4" gainprm="500" biasprm="0 -500 -50"/>
+    <general name="astribot_arm_right_joint_5" class="size2" joint="astribot_arm_right_joint_5" gainprm="500" biasprm="0 -500 -50"/>
+    <general name="astribot_arm_right_joint_6" class="size1" joint="astribot_arm_right_joint_6" gainprm="200" biasprm="0 -200 -20"/>
+    <general name="astribot_arm_right_joint_7" class="size1" joint="astribot_arm_right_joint_7" gainprm="200" biasprm="0 -200 -20"/>
+    <general name="astribot_gripper_right_joint_L1" tendon="gripper_right_split" ctrlrange="0 80" forcerange="-10 10" gainprm="2.36" biasprm="0 -100 -2"/>
+  </actuator>
+
+  <sensor>
+    <force site="astribot_chassis_front_left_site" name="astribot_chassis_front_left_force"/>
+    <force site="astribot_chassis_front_right_site" name="astribot_chassis_front_right_force"/>
+    <force site="astribot_chassis_back_site" name="astribot_chassis_back_force"/>
+    <gyro site="astribot_chassis_imu_site" name="astribot_chassis_base_imu_gyro"/>
+    <accelerometer site="astribot_chassis_imu_site" name="astribot_chassis_base_imu_acc"/>
+    <force site="force_torque_sensor_left" name="astribot_arm_left_force_sensor"/>
+    <torque site="force_torque_sensor_left" name="astribot_arm_left_torque_sensor"/>
+    <force site="force_torque_sensor_right" name="astribot_arm_right_force_sensor"/>
+    <torque site="force_torque_sensor_right" name="astribot_arm_right_torque_sensor"/>
+  </sensor>
+
+  <keyframe>
+    <key name="home" qpos="0 0 1 0 0 0 0 0 0 0 0 0 0 0 -1.53135 0.57851 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0.3 0 -0.2 1 0 0 0 0.3 0.5 -0.2 1 0 0 0 0.5 0 0.01 1 0 0 0"/>
+  </keyframe>
+</mujoco>
